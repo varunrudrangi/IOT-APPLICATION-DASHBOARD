@@ -1,0 +1,264 @@
+<Atlas_IoTDDL>
+	<Atlas_Thing>
+		<Descriptive_Metadata>
+			<Thing_ATID>MySmartGarage2</Thing_ATID>
+			<Thing_Name>Smart Garage</Thing_Name>
+			<Thing_Owner>piTribe</Thing_Owner>
+			<Thing_Vendor></Thing_Vendor>
+			<Thing_Model>piTribeV1</Thing_Model>
+			<Thing_ReleaseDate>8/2020</Thing_ReleaseDate>
+			<Thing_Type>Thing of Things</Thing_Type>
+			<Thing_OperatingSystem>Raspbian</Thing_OperatingSystem>
+			<Thing_ShortDescription>Smart IOT device which assists us to park our vehicle inside a parking garage!</Thing_ShortDescription>
+			<LongDescription></LongDescription>
+			<Thing_SSID>piTribe_parking1</Thing_SSID>
+			<Space_Coordinates></Space_Coordinates>
+			<Space_Name>Living Room</Space_Name>
+			<Space_Description></Space_Description>
+			<Space_Constraints>
+				<Temperature>
+					<Lower_Bound></Lower_Bound>
+					<Upper_Bound></Upper_Bound>
+				</Temperature>
+				<Humidity>
+					<Lower_Bound></Lower_Bound>
+					<Upper_Bound></Upper_Bound>
+				</Humidity>
+				<Voltage>
+					<Lower_Bound></Lower_Bound>
+					<Upper_Bound></Upper_Bound>
+				</Voltage>
+				<Radio_Interference_Radius></Radio_Interference_Radius>
+				<Safe_Temperature_Radius></Safe_Temperature_Radius>
+			</Space_Constraints>
+		</Descriptive_Metadata>
+		<Administrative_Metadata>
+			<Network_Manager>
+				<Module>WiFi</Module>
+				<Type>Built-In</Type>
+				<Network_Name>Y246-ATT</Network_Name>
+				<Network_Passcode>y2463b3b</Network_Passcode>
+				<MulticastGroup>
+					<IP>232.1.1.1</IP>
+					<Port>1235</Port>
+				</MulticastGroup>
+				<Communication_Protocol>Sockets</Communication_Protocol>
+				<InterOperableCommunication>
+					<Broker>
+						<Vendor>HiveMQ</Vendor>
+						<Dashboard>http://www.mqtt-dashboard.com/</Dashboard>
+						<IP>broker.hivemq.com</IP>
+						<Port>1883</Port>
+					</Broker>
+					<Topic>
+						<Root>/Atlas</Root>
+						<Network_MQTTClient>/Network/MQTT_Client</Network_MQTTClient>
+						<Network_PrivateBroker>/Network/Private_Broker</Network_PrivateBroker>
+						<Multicast_ThingIdentity>/Multicast/Tweet_ThingIdentity</Multicast_ThingIdentity>
+						<Multicast_EntityIdentity>/Multicast/Tweet_EntityIdentity</Multicast_EntityIdentity>
+						<Multicast_API>/Multicast/API</Multicast_API>
+						<Unicast>/Unicast/Interaction</Unicast>
+					</Topic>
+				</InterOperableCommunication>
+				<OMA_DM>
+					<AccessName>Eclipse Leshan</AccessName>
+					<IP>coap://leshan.eclipseprojects.io</IP>
+					<Port>5683</Port>
+				</OMA_DM>
+			</Network_Manager>
+			<Memory_Manager>
+				<Store_Format></Store_Format>
+				<MemoryUnit_Application></MemoryUnit_Application>
+				<MemoryUnit_Knowledge></MemoryUnit_Knowledge>
+			</Memory_Manager>
+		</Administrative_Metadata>
+		<Thing_Attachment>
+
+		</Thing_Attachment>
+		<Structural_Metadata>
+			<Number_Hardware>2</Number_Hardware>
+			<Number_Software>0</Number_Software>
+			<Number_Hybrid>0</Number_Hybrid>
+			<Number_Entities>2</Number_Entities>
+		</Structural_Metadata>
+	</Atlas_Thing>
+	<Atlas_Entities>
+		<Entity_1>
+			<Descriptive_Metadata>
+				<ID>A_Buzzer</ID>
+				<Name>Buzzer_Actuator</Name>
+				<Owner>piTribe</Owner>
+				<Vendor></Vendor>
+				<Category>Hardware</Category>
+				<Type>Connected</Type>
+				<Description></Description>
+			</Descriptive_Metadata>
+			<Services>
+				<Service_1>
+					<Name>turn_buzzer_on</Name>
+					<AppCategory>Safety</AppCategory>
+					<Type>Action</Type>
+					<Keywords></Keywords>
+					<Description></Description>
+					<Contextual_Constraints>
+						<Time_Window>30seconds</Time_Window>
+						<Usage_Mode></Usage_Mode>
+						<Concurrent></Concurrent>
+					</Contextual_Constraints>
+					<Temporal_Constraints>
+						<Working>
+							<StartTime>6am</StartTime>
+							<EndTime>10pm</EndTime>
+						</Working>
+						<Callable>
+							<StartTime>6:30am</StartTime>
+							<EndTime>9:30pm</EndTime>
+						</Callable>
+					</Temporal_Constraints>
+					<OutputDescription></OutputDescription>
+					<OutputType>void</OutputType>
+					<Service_Formula><![CDATA[
+// ~ Service body C/C++ code block ~
+// You can use the inputs you defined above by name
+// Any return values should match the specified output type
+const int BUZZER = 23;
+gpioWrite(BUZZER, 1);
+]]></Service_Formula>
+					<Service_NumberInputs>0</Service_NumberInputs>
+					<Service_InputTypes></Service_InputTypes>
+					<Service_InputDescriptions></Service_InputDescriptions>
+				</Service_1>
+				<Service_2>
+					<Name>turn_buzzer_off</Name>
+					<AppCategory>Safety</AppCategory>
+					<Type>Action</Type>
+					<Keywords></Keywords>
+					<Description></Description>
+					<Contextual_Constraints>
+						<Time_Window>30seconds</Time_Window>
+						<Usage_Mode></Usage_Mode>
+						<Concurrent></Concurrent>
+					</Contextual_Constraints>
+					<Temporal_Constraints>
+						<Working>
+							<StartTime>6am</StartTime>
+							<EndTime>10pm</EndTime>
+						</Working>
+						<Callable>
+							<StartTime>6:30am</StartTime>
+							<EndTime>9:30pm</EndTime>
+						</Callable>
+					</Temporal_Constraints>
+					<OutputDescription></OutputDescription>
+					<OutputType>void</OutputType>
+					<Service_Formula><![CDATA[
+// ~ Service body C/C++ code block ~
+// You can use the inputs you defined above by name
+// Any return values should match the specified output type
+const int BUZZER = 23;
+gpioWrite(BUZZER, 0);
+]]></Service_Formula>
+					<Service_NumberInputs>0</Service_NumberInputs>
+					<Service_InputTypes></Service_InputTypes>
+					<Service_InputDescriptions></Service_InputDescriptions>
+				</Service_2>
+				<Number_Services>2</Number_Services>
+			</Services>
+			<UnboundedService>
+				<Number_UnboundedServices>0</Number_UnboundedServices>
+			</UnboundedService>
+			<Relationships>
+				<Number_Relationships>0</Number_Relationships>
+			</Relationships>
+		</Entity_1>
+		<Entity_2>
+			<Descriptive_Metadata>
+				<ID>A_LED</ID>
+				<Name>Green_LED_Actuator</Name>
+				<Owner></Owner>
+				<Vendor></Vendor>
+				<Category>Hardware</Category>
+				<Type>Connected</Type>
+				<Description></Description>
+			</Descriptive_Metadata>
+			<Services>
+				<Service_1>
+					<Name>turn_led_on</Name>
+					<AppCategory>Safety</AppCategory>
+					<Type>Action</Type>
+					<Keywords></Keywords>
+					<Description></Description>
+					<Contextual_Constraints>
+						<Time_Window>30seconds</Time_Window>
+						<Usage_Mode></Usage_Mode>
+						<Concurrent></Concurrent>
+					</Contextual_Constraints>
+					<Temporal_Constraints>
+						<Working>
+							<StartTime>6am</StartTime>
+							<EndTime>10pm</EndTime>
+						</Working>
+						<Callable>
+							<StartTime>6:30am</StartTime>
+							<EndTime>9:30pm</EndTime>
+						</Callable>
+					</Temporal_Constraints>
+					<OutputDescription></OutputDescription>
+					<OutputType>void</OutputType>
+					<Service_Formula><![CDATA[
+// ~ Service body C/C++ code block ~
+// You can use the inputs you defined above by name
+// Any return values should match the specified output type
+int LED = 25;
+gpioWrite(LED, 1);
+]]></Service_Formula>
+					<Service_NumberInputs>0</Service_NumberInputs>
+					<Service_InputTypes></Service_InputTypes>
+					<Service_InputDescriptions></Service_InputDescriptions>
+				</Service_1>
+				<Service_2>
+					<Name>turn_led_off</Name>
+					<AppCategory>Safety</AppCategory>
+					<Type>Action</Type>
+					<Keywords></Keywords>
+					<Description></Description>
+					<Contextual_Constraints>
+						<Time_Window>30seconds</Time_Window>
+						<Usage_Mode></Usage_Mode>
+						<Concurrent></Concurrent>
+					</Contextual_Constraints>
+					<Temporal_Constraints>
+						<Working>
+							<StartTime>6am</StartTime>
+							<EndTime>10pm</EndTime>
+						</Working>
+						<Callable>
+							<StartTime>6:30am</StartTime>
+							<EndTime>9:30pm</EndTime>
+						</Callable>
+					</Temporal_Constraints>
+					<OutputDescription></OutputDescription>
+					<OutputType>void</OutputType>
+					<Service_Formula><![CDATA[
+// ~ Service body C/C++ code block ~
+// You can use the inputs you defined above by name
+// Any return values should match the specified output type
+
+int LED = 25;
+gpioWrite(LED, 0);
+]]></Service_Formula>
+					<Service_NumberInputs>0</Service_NumberInputs>
+					<Service_InputTypes></Service_InputTypes>
+					<Service_InputDescriptions></Service_InputDescriptions>
+				</Service_2>
+				<Number_Services>2</Number_Services>
+			</Services>
+			<UnboundedService>
+				<Number_UnboundedServices>0</Number_UnboundedServices>
+			</UnboundedService>
+			<Relationships>
+				<Number_Relationships>0</Number_Relationships>
+			</Relationships>
+		</Entity_2>
+	</Atlas_Entities>
+</Atlas_IoTDDL>
