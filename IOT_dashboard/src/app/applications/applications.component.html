@@ -1,0 +1,52 @@
+<!-- src/app/applications/applications.component.html -->
+<div *ngIf="applications.length; else noData">
+    <ul>
+      <li *ngFor="let app of applications">
+        {{ app.appName }}
+        <button (click)="activateApp(app.appName)" [disabled]="app.active">Activate</button>
+        <button (click)="stopApp(app.appName)" [disabled]="!app.active">Stop</button>
+        <button (click)="saveApp(app.appName)" [disabled]="!app.active">Save</button>
+        <button (click)="deleteApp(app.appName)">Delete</button>
+      </li>
+    </ul>
+</div>
+<ng-template #noData><p>No applications available.</p></ng-template>
+
+  
+<div class="row">
+
+  <div>
+    <h3>Upload Application Configuration</h3>
+    <input type="file" (change)="onFileSelected($event)" accept=".json">
+    <button (click)="uploadFile()" [disabled]="!selectedFile">Upload File</button>
+  </div>
+  
+  <!-- Form to add a new application -->
+  <div>
+    <h3>Add New Application</h3>
+    <input type="text" [(ngModel)]="newApp.name" placeholder="Enter application name">
+    <select [(ngModel)]="newApp.service1">
+      <option value="">Select Service 1</option>
+      <option *ngFor="let service of services" [value]="service.name">{{ service.name }}</option>
+    </select>
+    <select [(ngModel)]="newApp.service2">
+      <option value="">Select Service 2</option>
+      <option *ngFor="let service of services" [value]="service.name">{{ service.name }}</option>
+    </select>
+    <select [(ngModel)]="newApp.relationship"(change)="onSelectChange()">
+      <option value="">Select Relationship</option>
+      <option *ngFor="let relationship of relationships" [value]="relationship.name">{{ relationship.name }}</option>
+    </select>
+    
+    <input type="number" [(ngModel)]="thresholdvalue" placeholder="limit" *ngIf="enableOtherProps">
+    <select [(ngModel)]="comparisionOperator" *ngIf="enableOtherProps">
+      <option value="" disabled selected>Select operator</option>
+      <option value="<">&#60;</option>
+      <option value=">">&#62;</option>
+    </select>
+
+    <button (click)="addApplication()">Add Application</button>
+  </div>
+  
+  <!-- Additional HTML in src/app/applications/applications.component.html -->
+</div>

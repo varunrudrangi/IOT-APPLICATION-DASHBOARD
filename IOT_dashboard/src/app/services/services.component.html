@@ -1,0 +1,8 @@
+<!-- src/app/services/services.component.html -->
+<div *ngIf="services.length; else noData">
+    <ul>
+      <li *ngFor="let service of services">{{ service.name }} - {{ service.description }}</li>
+    </ul>
+  </div>
+  <ng-template #noData><p>No services available.</p></ng-template>
+  

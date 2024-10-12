@@ -1,0 +1,65 @@
+/* src/app/applications/applications.component.css */
+:host {
+  display: block;
+  margin: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  background-color: #181a1d;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-right: 5px;;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+button i {
+  margin-right: 5px;
+}
+
+/* Div layout for upload and new application form */
+.row {
+  display: flex;
+}
+
+.row > div {
+  flex: 1; /* Default flex */
+}
+
+.row > div:first-child {
+  flex: 1;
+}
+
+.row > div:last-child {
+  flex: 2;
+}
+
+input[type="text"], input[type="file"], input[type="number"], select {
+  width: 100%; /* Flexibility within the div */
+  max-width: 300px; /* Fixed maximum width to prevent over-expansion */
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}

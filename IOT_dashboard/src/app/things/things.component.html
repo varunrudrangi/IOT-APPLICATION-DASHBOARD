@@ -1,0 +1,8 @@
+<!-- src/app/things/things.component.html -->
+<div *ngIf="things.length; else noData">
+    <ul>
+      <li *ngFor="let thing of things">{{ thing.name }}</li>
+    </ul>
+  </div>
+  <ng-template #noData><p>No things available.</p></ng-template>
+  

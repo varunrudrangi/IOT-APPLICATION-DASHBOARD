@@ -1,0 +1,8 @@
+<!-- src/app/relationships/relationships.component.html -->
+<div *ngIf="relationships.length; else noData">
+    <ul>
+      <li *ngFor="let relationship of relationships">{{ relationship.name }}</li>
+    </ul>
+  </div>
+  <ng-template #noData><p>No relationships available.</p></ng-template>
+  
